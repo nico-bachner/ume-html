@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>ume</title>
+		
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<style>
+			h1, h2, h3, h4, h5 {
+				text-align: center;
+				margin: 0;
+			}
+
+			section {
+				padding: 5vh 0;
+			}
+
+			.button {
+				text-decoration: none;
+				color: black;
+			}
+
+			.navbar-item{
+				padding: 0px 16px;
+			}
+
+			#team:hover .dropdown-team {
+				display: block;
+			}
+
+			.dropdown-team a {
+				color: black;
+				padding: 12px 16px;
+				text-decoration: none;
+				display: block;
+			}
+
+			.dropdown-team a:hover {background-color: #f1f1f1}
+
+			.signin-link {
+				padding: 8px 12px;
+				border-radius: 3px;
+				background-color: rgb(70,170,230);
+				color: white;
+			}
+					
+			.dropdown-icon {
+				height: 20px;
+				width: 20px;
+				padding: 15px;
+				float: right;
+			}
+					
+			.dropdown-content {
+				display: none;
+				position: absolute;
+				top: 50px;
+				left: 0px;
+				background-color: white;
+				width: 100vw;
+				box-shadow: 0px 2px 4px rgba(0, 0, 50, 0.1);
+				z-index: 2;
+			}
+
+			.sidebar-item {
+				padding: 12px 16px;
+				display: block;
+				text-align: center;
+			}
+					
+			.dropdown-icon:hover .dropdown-content {
+				display: block;
+			}
+
+			.team-member {
+				height: 242px;
+				width: 160px;
+				background-color: rgb(70,170,230);
+				border-radius: 12px;
+				box-shadow: -1rem 0 3rem #000;
+				transition: 0.4s ease-out;
+				font-family: 'Open Sans', sans-serif;
+				display: inline-block;
+				margin: 5px;
+			}
+
+			.team-member:hover {
+				transform: translateY(-20px);
+				transition: 0.4s ease-out;
+			}
+
+			.member-name {
+				height: 50px;
+				color: white;
+				font-size: 25px;
+				line-height: 25px;
+				font-weight: 300;
+				padding: 20px;
+				padding-bottom: 0px;
+			}
+
+			.member-role {
+				height: 30px;
+				color: white;
+				font-size: 15px;
+				line-height: 15px;
+				font-weight: 300;
+				padding: 10px;
+			}
+
+			.team-individual-photo {
+				width: 150px;
+				border-radius: 7px;
+				margin: 5px;
+			}
+
+			@media only screen and (min-width: 800px) {
+				.hide-large {
+					display: none !important;
+				}
+			}
+
+			@media only screen and (max-width: 800px) {
+				.hide-small {
+					display: none !important;
+				}
+			}
+		</style>
+	</head>
+
+	<body style="
+		margin: 0;
+		background: url('images/generic/skyline.jpg');
+		background-size: cover;
+		background-position: center;
+		background-attachment: fixed;
+		font-family: helvetica, sans-serif
+	">
+
+		<!-- navbar -->
+		<nav style="
+			top: 0;
+			width: 100%;
+			height: 50px;
+			z-index: 1;
+			border: none;
+			position: fixed;
+			background: rgba(255, 255, 255, 1);
+			box-shadow: 0px 2px 4px rgba(0, 0, 50, 0.1);
+		">
+			<a href="https://www.ume.solutions/">
+				<img src="images/logos/ume-logo.png" style="height: 40px; width: 40px; padding: 5px;">
+			</a>
+
+			<div class="hide-small" style="float: right; padding: 16px 8px;">
+				<a href="#about" class="navbar-item button">About</a>
+				<a 
+					href="#team"
+					id="team-nav"
+					style="
+						padding: 0px 16px;
+						width: auto;
+						text-decoration: none;
+						color: black;
+					"
+					:hover
+				>
+					Team
+				</a>
+				<div 
+					class="dropdown-team" 
+					style="
+						display: none;
+						position: absolute;
+						background-color: #f9f9f9;
+						min-width: 120px;
+						box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+						z-index: 1;
+					"
+				>
+					<a href="#">Laurent Denayer</a>
+					<a href="#">Link 2</a>
+					<a href="#">Link 3</a>
+					</div>
+				<a href="#product" class="navbar-item button">Product</a>
+				<a href="#contact" class="navbar-item button" style="padding-right: 24px;">Contact</a>
+				<a href="https://app.ume.solutions/login" class="navbar-item button signin-link">access ume platform</a>
+			</div>
+
+			<!-- Hide links on small screens and replace them with a menu icon dropdown menu -->
+			<div class="dropdown-icon hide-large">
+				<svg width="20" height="20">
+					<rect y="0" width="20" height="4" />
+					<rect y="8" width="20" height="4" />
+					<rect y="16" width="20" height="4" />
+				</svg>
+				<div class="dropdown-content">
+					<table class="sidebar-table">
+						<tr>
+							<td><a href="#home" class="sidebar-item button">Home</a></td>
+							<td><a href="#about" class="sidebar-item button">About</a></td>
+							<td><a href="#team" class="sidebar-item button">Team</a></td>
+						</tr>
+						<tr>
+							<td><a href="#product" class="sidebar-item button">Product</a></td>
+							<td><a href="#awards" class="sidebar-item button">Awards</a></td>
+							<td><a href="#contact" class="sidebar-item button">Contact</a></td>
+						</tr>
+						<tr>
+							<td><a href="https://app.ume.solutions/login" class="sidebar-item button">access ume platform</a></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</nav>
+		<!-- end navbar -->
+
+		<!-- Header with full-height image -->
+		<header style="height: 100vh; background: rgba(0, 0, 0, 0);">
+			<img 
+				src="images/logos/ume-logo.png" 
+				style="
+					width: 16vh; 
+					height: 16vh; 
+					display: block;
+					margin-left: auto; 
+					margin-right: auto;
+					padding-top: 42vh;
+				"
+			>
+			<h1 style="
+				color: white;
+				font-weight: 530;
+				font-size: 5vh;
+				margin: 5vh;
+				font-family: 'Open Sans', sans-serif;
+			">
+				Know your <br>
+				fund distributor
+			</h1>    
+		</header>
+
+		<section style="background: rgba(0, 0, 0, 0.8); color: white;">
+			<div style="width: 50vw; margin-left: auto; margin-right: auto;">
+				<h1 style="font-size: 5vh;">
+					<span style="display: inline-block; padding: 0 1vw;">know yo<span style="color: rgb(70, 170, 230);">u</span></span>
+					<span style="display: inline-block; padding: 0 1vw;">know <span style="color: rgb(70, 170, 230);">me</span></span>
+					<span style="display: inline-block; padding: 0 1vw;"><span style="color: rgb(70, 170, 230);">me</span></span>
+				</h1>
+				<h2 style="font-size: 3vh; padding-top: 5vh;">
+					Our mission
+				</h2>
+				<p style="font-size: 3vh; text-align: center;">
+					ume (‘you-me’) has been designed to respond to the asset management industry demands for an effective automated due diligence of fund distributors
+				</p>
+			</div>
+			
+			"FILLING THE DUE DILIGENCE GAP WITH A DIFFERENT AND INNOVATIVE APPROACH" -inFinance Luxembourg
+		</section>
+		
+		<section style="background: rgba(255, 255, 255, 0.9);">
+			<h2 style="padding-bottom: 30px;">Team</h2>
+			<div style="width: 80vw; margin-left: auto; margin-right: auto;">
+				<div class="team-member">
+					<h2 class="member-name">Laurent Denayer</h2>
+					<h3 class="member-role">CEO</h3>
+					<img src="images/people/LaurentDenayer.jpg" class="team-individual-photo">
+				</div>					
+				<div class="team-member">
+					<h2 class="member-name">Rolf Bachner</h2>
+					<h3 class="member-role">COO</h3>
+					<img src="images/people/RolfBachner.jpg" class="team-individual-photo">
+				</div>					
+				<div class="team-member">
+					<h2 class="member-name">Oleksiy Shostak</h2>
+					<h3 class="member-role">CTO</h3>
+					<img src="images/people/OlexiyShostak.jpg" class="team-individual-photo">
+				</div>
+				<div class="team-member">
+					<h2 class="member-name">Graham Goodhew</h2>
+					<h3 class="member-role">Independent Director</h3>
+					<img src="images/people/GrahamGoodhew.jpg" class="team-individual-photo">
+				</div>					
+				<div class="team-member">
+					<h2 class="member-name">Samuel Eustachi</h2>
+					<h3 class="member-role">Independent Director</h3>
+					<img src="images/people/SamuelEustachi.jpg" class="team-individual-photo">
+				</div>		
+				<div class="team-member">
+					<h2 class="member-name">Guy Buisseret</h2>
+					<h3 class="member-role">Independent Director</h3>
+					<img src="images/people/GuyBuisseret.jpg" class="team-individual-photo">
+				</div>
+			</div>
+		</section>
+
+		<section id="product">
+
+		</section>
+
+		<section id="awards">
+
+		</section>
+
+		<!-- Footer -->
+		<footer style="
+			background-color: rgba(18, 20, 22, 0.9);
+			color: white;
+			padding: 5vh 0 1vh 0;
+		">
+			<p style="
+				text-align: center;
+				margin-top: 0;
+				font-size: 14px;
+			">
+				<a href="#home" class="button" style="color: white;">Home</a> /
+				<a href="#about" class="button" style="color: white;">About</a> /
+				<a href="#team" class="button" style="color: white;">Team</a> /
+				<a href="#product" class="button" style="color: white;">Product</a> /
+				<a href="#awards" class="button" style="color: white;">Awards</a> /
+				<a href="#contact" class="button" style="color: white;">Contact</a> /
+				<a href="https://app.ume.solutions/login" class="button" style="color: white;">Access ume platform</a>
+			</p>
+			<p style="
+				text-align: center;
+				color: gray;
+				font-size: 14px;
+				line-height: 1.5;
+			">
+				Copyright &copy 2020. ume luxembourg. All rights reserved. <br>
+				Authorisation of establishment 10079489/0 <br>
+				VAT LU 29437653
+			</p>
+		</footer>
+	</body>
+</html>
